@@ -1,0 +1,36 @@
+<style>
+	textarea {
+				resize: none;
+			}
+</style>
+<div title="Mentee Screen" ng-contorller="menteeCtrl">
+   	<div class="container">
+		<h4>Welcome {{menteeObj.menteeName}}</h4>
+		<h4>Mentored by {{menteeObj.mentorName}}</h4>
+        <div class="row form-group">
+            <div class="col-md-4 col-sm-5 col-xs-6">
+	            <select class="form-control" ng-model="menteeObj.quarter" ng-init="menteeObj.quarter=quarters[0]" name="quarter" ng-options="quarter for quarter in menteeObj.quarters">
+				</select> 
+			</div>
+        </div>
+        <div class="row form-group">
+        	<div class="col-md-4 col-sm-5 col-xs-6">
+				<select class="form-control" ng-model="menteeObj.year" ng-init="menteeObj.year=years[0]" name="year" ng-options="year for year in menteeObj.years">
+				</select> 
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-2">
+				<input type="button" class="form-control" ng-model="menteeGoBtn" name="menteeGoBtn" ng-click="menteeGoBtnClick()" value="Go" />
+			</div>
+        </div> 
+       <!--<div class="row well" ng-show="afterGo" ng-controller="objCtrl" ng-init="objectives={}">  --> 
+        <div class="row well" ng-show="afterGo">
+        	<div ng-include="'views/objectives.html'"></div>
+		</div>
+		<div class="row well" ng-show="afterGo">
+			<div ng-include="'views/evalMenteeByMentor.html'"></div>
+		</div>
+		<div class="row well" ng-show="afterGo">
+			<div ng-include="'views/evalMentorByMentee.html'"></div>
+		</div> 
+    </div>
+</div>
