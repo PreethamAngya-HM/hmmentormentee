@@ -1,0 +1,35 @@
+		
+			<legend>Objectives</legend>
+        	<div class="col-md-12 col-sm-12 col-xs-12">
+        		<div class="col-md-2 col-sm-2 col-xs-2 form-group">
+					<label class="pull-right">Objectives Reviewed </label>
+				</div>
+				<div class="col-md-2 col-sm-2 col-xs-2 form-group">
+					<input type="checkbox" class="form-control" ng-model="objectives.objReviewed" name="objReviewed" />
+				</div>
+				<div class="col-md-2 col-sm-2 col-xs-2 form-group">
+					<input type="button" class="form-control" ng-model="updateObjReviewed" name="updateObjReviewed" value="Update" ng-show="updateObjReviewedShow" ng-click="objUpdateBtnClickObjReviewed()"/>
+				</div>
+        	</div>
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="col-md-2 col-sm-2 col-xs-2 form-group">
+					<label class="pull-right">Action Plan </label>
+				</div>
+				<div class="col-md-8 col-sm-8 col-xs-8 form-group">
+					<textarea row="8" class="form-control" ng-model="objectives.actionPlan" name="actionPlan" > </textarea>
+				</div>
+				<div class="col-md-2 col-sm-2 col-xs-2 form-group">
+					<input type="button" class="form-control" ng-model="updateActionPlan" name="updateActionPlan" value="Update" ng-show="updateActionPlanShow" ng-click="objUpdateBtnClickActionPlan()"/>
+				</div>
+			</div>
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="col-md-2 col-sm-2 col-xs-2 form-group">
+					<label class="pull-right">Results </label>
+				</div>
+				<div class="col-md-8 col-sm-8 col-xs-8 form-group">
+					<textarea row="8" class="form-control" ng-model="objectives.results" name="results" > </textarea>
+				</div>
+				<div class="col-md-2 col-sm-2 col-xs-2 form-group">
+					<input type="button" class="form-control" ng-model="updateResults" name="updateResults" value="Update" ng-show="updateResultsShow" ng-click="objUpdateBtnClick()"/>
+				</div>
+			</div>
