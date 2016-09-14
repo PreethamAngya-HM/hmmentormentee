@@ -7,7 +7,7 @@ public interface Provider {
 	//String PASSWORD="preeth";
 	
 	String DRIVER="org.postgresql.Driver";  
-	String CONNECTION_URL="postgres://meyfsvbnxvebgo:FehZNUZ-n8xNnIflCfeCv5JKhC@ec2-54-163-248-218.compute-1.amazonaws.com:5432/d6qcrbei5v8a52";  
+	String CONNECTION_URL="jdbc:postgresql://ec2-54-163-248-218.compute-1.amazonaws.com:5432/d6qcrbei5v8a52";  
 	String USERNAME="meyfsvbnxvebgo";  
 	String PASSWORD="FehZNUZ-n8xNnIflCfeCv5JKhC";
 	
