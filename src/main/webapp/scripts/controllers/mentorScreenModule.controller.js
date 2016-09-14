@@ -1,9 +1,9 @@
 angular.module("mentorScreenModule.controller",["ngRoute","ngMessages","logInModule.controller"])
 .service("mentorService",function($http,$location){
-	var mentorMenteeNamesUrl = 'http://localhost:8080/MentorMentee/getMentorMenteeNamesForMentor/';
-	var objUrl = 'http://localhost:8080/MentorMentee/getObjectives/';
-	var evalMenteeByMentorUrl = 'http://localhost:8080/MentorMentee/getEvalMenteeByMentor/';
-	var evalMentorByMenteeUrl = 'http://localhost:8080/MentorMentee/getEvalMentorByMentee/';
+	var mentorMenteeNamesUrl = '/getMentorMenteeNamesForMentor/';
+	var objUrl = '/getObjectives/';
+	var evalMenteeByMentorUrl = '/getEvalMenteeByMentor/';
+	var evalMentorByMenteeUrl = '/getEvalMentorByMentee/';
 	this.objectives = {};
 	this.evalMenteeByMentor = {};
 	this.evalMentorByMentee = {};
@@ -66,9 +66,9 @@ angular.module("mentorScreenModule.controller",["ngRoute","ngMessages","logInMod
 })
 
 .service("mentorUpdateService",function($http){
-	var objUrlObjReviewed = 'http://localhost:8080/MentorMentee/setObjectivesObjReviewed/';
-	var objUrlActionPlan = 'http://localhost:8080/MentorMentee/setObjectivesActionPlan/';
-	var evalMenteeByMentorUrl = 'http://localhost:8080/MentorMentee/setEvalMenteeByMentor/';
+	var objUrlObjReviewed = '/setObjectivesObjReviewed/';
+	var objUrlActionPlan = '/setObjectivesActionPlan/';
+	var evalMenteeByMentorUrl = '/setEvalMenteeByMentor/';
 	this.setObjectivesObjReviewed = function(menteeObj,objectives){
 		var menteeReq = {"menteeObj":menteeObj,"objectivesObj":objectives};
 		return $http({
