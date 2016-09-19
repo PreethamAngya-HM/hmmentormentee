@@ -1,7 +1,7 @@
 angular.module("logInModule.controller",["ngRoute","ngMessages"])
 .service("dataServiceLogin",function($http,$location){
-	var authUser = '/MentorMentee/authenticateUser/';
-	var logoutUser = '/MentorMentee/logoutUser/';
+	var authUser = '/authenticateUser/';
+	var logoutUser = '/logoutUser/';
 	this.authenticateUser = function(loginObj){
 		return $http({
 		 method:'POST',
