@@ -12,18 +12,31 @@ angular.module(
             $routeProvider
             .when("/", {
                 templateUrl : "views/loginPartial.html",
-                controller: 'loginCtrl'
             })
             .when("/adminLogin", {
-                templateUrl : "views/adminScreenPartial.html",
-                controller: 'adminCtrl'	
+                templateUrl : "views/adminScreenPartial.html",	
             })
             .when("/mentorLogin", {
                 templateUrl : "views/mentorScreenPartial.html",
-                controller: 'mentorCtrl'
+                controller : "mentorCtrl"
             })
             .when("/menteeLogin", {
             	templateUrl : "views/menteeScreenPartial.html",
-                controller: 'menteeCtrl'
+            	controller : "menteeCtrl"
+            })
+            .when("/Logout", {
+            	templateUrl : "views/loginPartial.html",
+            	controller : "mainCtrl"
+            })
+            .when("/sessionExpired", {
+            	templateUrl : "views/sessionExpired.html"
             });
+        })
+        
+        .controller("mainCtrl",function($scope,$rootScope,dataServiceLogin){
+        	var temp = dataServiceLogin.logoutUser($scope.login);
+    		temp.then(function(data){
+    			$rootScope.loginAuthenticationError = "Logged out successfully";
+    		});
+        	
         });

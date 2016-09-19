@@ -1,10 +1,11 @@
 angular.module("logInModule.controller",["ngRoute","ngMessages"])
 .service("dataServiceLogin",function($http,$location){
-	var baseUrl = '/authenticateUser/';
+	var authUser = '/MentorMentee/authenticateUser/';
+	var logoutUser = '/MentorMentee/logoutUser/';
 	this.authenticateUser = function(loginObj){
 		return $http({
 		 method:'POST',
-		 url : baseUrl,
+		 url : authUser,
 		 data : loginObj
 		}).then(function successCallback(response) {
 			console.log("Service Success Response: "+ response.statusText);
@@ -14,10 +15,24 @@ angular.module("logInModule.controller",["ngRoute","ngMessages"])
 			return response.data;
 		});
 	}
+	this.logoutUser = function(){
+		console.log("Inside Logout User");
+		return $http({
+		 method:'POST',
+		 url : logoutUser
+		}).then(function successCallback(response) {
+			console.log("Service Success Response: "+ response.statusText);
+			return response.data;
+		}, function errorCallback(response) {
+			console.log("Service Error Response: "+ response.statusText);
+			return response.data;
+		});
+	}
 })
-.controller("loginCtrl",function($scope, $location, dataServiceLogin){
+.controller("loginCtrl",function($scope, $rootScope, $location, dataServiceLogin){
 	console.log("loginCtrl");
-	$scope.loginAuthenticationError = "";
+	dataServiceLogin.logoutUser();
+	$rootScope.loginAuthenticationError = "";
 	$scope.roleNames = ["Role","Admin","Mentor","Mentee"];
 	$scope.userName = ''; 
 	$scope.password = '';
@@ -36,11 +51,11 @@ angular.module("logInModule.controller",["ngRoute","ngMessages"])
 					$location.path('/menteeLogin');
 				}
 				else{
-					$scope.loginAuthenticationError = 'Role dosen\'t match';
+					$rootScope.loginAuthenticationError = 'Role dosen\'t match';
 				}
 			}
 			else{
-				$scope.loginAuthenticationError = 'Authentication Failed';
+				$rootScope.loginAuthenticationError = 'Authentication Failed';
 			}
 		});
 	};

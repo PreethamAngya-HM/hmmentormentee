@@ -8,6 +8,8 @@ import com.mentorMentee.beans.MenteeRequest;
 import com.mentorMentee.beans.Objectives;
 import com.mentorMentee.dao.MentorMenteeDAO;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -187,4 +189,21 @@ public class MentorMenteeSpringRestController {
 		}
 		
 	}
+	
+	@RequestMapping(value = "/logoutUser", method = RequestMethod.POST)
+	public ResponseEntity<String> logoutUserMethod() {
+		System.out.println("=====In logoutUser=====");
+		//Mentee menteeObj = menteeReq.getMenteeObj();
+		//EvalMentorByMentee evalMentorByMenteeObj = menteeReq.getEvalMentorByMenteeObj();
+		String loggedOut = "";
+		try {
+			loggedOut = mentorMenteeDAO.setlogoutUser();
+			return new ResponseEntity(HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		}
+		
+	}
+	
 }

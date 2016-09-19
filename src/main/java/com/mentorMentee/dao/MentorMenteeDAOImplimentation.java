@@ -69,10 +69,15 @@ public class MentorMenteeDAOImplimentation implements MentorMenteeDAO{
 				else{
 					System.out.println("========Authentication Failed=======");
 					tempLoginObj.setAuthenticated(false);
+					setLoggedInUserEmail("");
+					setFullName("");
 				}
 			}
 		}catch(Exception e){
 			e.printStackTrace();
+			tempLoginObj.setAuthenticated(false);
+			setLoggedInUserEmail("");
+			setFullName("");
 			return tempLoginObj;
 		}
 		return tempLoginObj;
@@ -469,6 +474,13 @@ public class MentorMenteeDAOImplimentation implements MentorMenteeDAO{
 			e.printStackTrace();
 		}
 		return objectivesObj;
+	}
+
+	public String setlogoutUser() throws Exception {
+		setLoggedInUserEmail("");
+		setFullName("");
+		setMMANum(0);
+		return "User logged out";
 	}
 	
 }

@@ -1,9 +1,9 @@
 angular.module("mentorScreenModule.controller",["ngRoute","ngMessages","logInModule.controller"])
 .service("mentorService",function($http,$location){
-	var mentorMenteeNamesUrl = '/getMentorMenteeNamesForMentor/';
-	var objUrl = '/getObjectives/';
-	var evalMenteeByMentorUrl = '/getEvalMenteeByMentor/';
-	var evalMentorByMenteeUrl = '/getEvalMentorByMentee/';
+	var mentorMenteeNamesUrl = '/MentorMentee/getMentorMenteeNamesForMentor/';
+	var objUrl = '/MentorMentee/getObjectives/';
+	var evalMenteeByMentorUrl = '/MentorMentee/getEvalMenteeByMentor/';
+	var evalMentorByMenteeUrl = '/MentorMentee/getEvalMentorByMentee/';
 	this.objectives = {};
 	this.evalMenteeByMentor = {};
 	this.evalMentorByMentee = {};
@@ -66,9 +66,9 @@ angular.module("mentorScreenModule.controller",["ngRoute","ngMessages","logInMod
 })
 
 .service("mentorUpdateService",function($http){
-	var objUrlObjReviewed = '/setObjectivesObjReviewed/';
-	var objUrlActionPlan = '/setObjectivesActionPlan/';
-	var evalMenteeByMentorUrl = '/setEvalMenteeByMentor/';
+	var objUrlObjReviewed = '/MentorMentee/setObjectivesObjReviewed/';
+	var objUrlActionPlan = '/MentorMentee/setObjectivesActionPlan/';
+	var evalMenteeByMentorUrl = '/MentorMentee/setEvalMenteeByMentor/';
 	this.setObjectivesObjReviewed = function(menteeObj,objectives){
 		var menteeReq = {"menteeObj":menteeObj,"objectivesObj":objectives};
 		return $http({
@@ -113,13 +113,16 @@ angular.module("mentorScreenModule.controller",["ngRoute","ngMessages","logInMod
 		});
 	}
 })
-.controller("mentorCtrl",function($scope,mentorService,$rootScope,mentorUpdateService){
+.controller("mentorCtrl",function($scope,mentorService,$rootScope,mentorUpdateService,$location){
 	console.log("mentorCtrl");
 	console.log($scope.$id);
 	$scope.mentorObj={};
 	var temp = mentorService.getMentorMenteeNamesForMentor($scope.mentorObj);
 	temp.then(function(data){
 		$scope.mentorObj = data;
+		if(data.mentorName==null){
+			$location.path('/sessionExpired');
+		}
 	});
 	$scope.objectives = {};
 	$scope.evalMenteeByMentorObj = {};

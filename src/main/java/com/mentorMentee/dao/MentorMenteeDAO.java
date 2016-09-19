@@ -18,4 +18,5 @@ public interface MentorMenteeDAO {
 	Mentee getMentorMenteeNamesForMentor(Mentee menteeObj)throws Exception;
 	Objectives setObjectivesObjReviewed(Mentee menteeObj, Objectives objectivesObj)throws Exception;
 	Objectives setObjectivesActionPlan(Mentee menteeObj, Objectives objectivesObj)throws Exception;
+	String setlogoutUser()throws Exception;
 }
