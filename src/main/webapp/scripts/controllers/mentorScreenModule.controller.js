@@ -120,7 +120,7 @@ angular.module("mentorScreenModule.controller",["ngRoute","ngMessages","logInMod
 	var temp = mentorService.getMentorMenteeNamesForMentor($scope.mentorObj);
 	temp.then(function(data){
 		$scope.mentorObj = data;
-		if(data.mentorName==null){
+		if(data.mentorName==null && data.menteeNames[0]==null){
 			$location.path('/sessionExpired');
 		}
 	});

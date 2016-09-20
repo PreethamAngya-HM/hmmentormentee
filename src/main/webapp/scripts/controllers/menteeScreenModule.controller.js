@@ -105,7 +105,7 @@ angular.module("menteeScreenModule.controller",["ngRoute","ngMessages","logInMod
 	var temp = menteeService.getMentorMenteeNames($scope.menteeObj);
 	temp.then(function(data){
 		$scope.menteeObj = data;
-		if(data.menteeName==null){
+		if(data.menteeName==null && data.mentorName==null){
 			$location.path('/sessionExpired');
 		}
 	});
